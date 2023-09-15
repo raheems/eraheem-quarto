@@ -1,9 +1,9 @@
 ---
-title: "Hello there!"
+title: "Welcome!"
 pagetitle: "{{< meta website.title >}}"
-main-photo: /files/profiles/andrew-heiss-2022.jpg
-main-photo-square: /files/profiles/andrew-heiss-2022-square.jpg
-title-block-banner: "#CF4446"
+main-photo: /files/profiles/enayetur-raheem-20230914.png
+main-photo-square: /files/profiles/enayetur-raheem-20230914.png
+title-block-banner: "#088A85"
 format:
   html:
     quarto-template-params:
@@ -32,11 +32,15 @@ format:
 
 ::: {.g-col-12 .g-col-sm-8}
 
-I'm an assistant professor in the [Department of Public Management and Policy](https://aysps.gsu.edu/public-management-policy/) at the [Andrew Young School of Policy Studies](https://aysps.gsu.edu/) at [Georgia State University](https://www.gsu.edu/). I received a PhD in public policy and political science from Duke University's [Sanford School of Public Policy](http://sanford.duke.edu/) in 2017.
+I'm a healthcare data scientist with a statistics background. As a Principal Data Scientist at [ICON](https://www.iconplc.com), I currently support [Incyte Pharmaceutical Company](htts://incyte.com) in their Data Science and Innovation group.
 
-I study [how international NGOs work in authoritarian countries](https://www.ingoresearch.org/amicable-contempt/), and I received the 2016–2018 [Emerging Scholar Dissertation Award](https://www.istr.org/page/DissertationISTR) from the [International Society for Third Sector Research (ISTR)](https://www.istr.org/). I do research in public administration and policy, nonprofit management, international relations, and comparative politics.
+I have been supporting healthcare providers (hospitals/EHR data), payors (medical claims), and bio-pharma (RWD, RWE, clinical trials) for over 8 years now.
 
-I teach courses on [program evaluation and causal inference](https://evalf22.classes.andrewheiss.com/), [statistics and data science](https://statsf18.classes.andrewheiss.com/), [data visualization](https://datavizs22.classes.andrewheiss.com/), [economics](https://econs22.classes.andrewheiss.com/), and [science communication](https://storiesf17.classes.andrewheiss.com/). I'm also a [certified RStudio instructor](https://education.rstudio.com/trainers/people/heiss+andrew/) and a [Posit Academy mentor](https://posit.co/products/enterprise/academy/) and absolutely love teaching how to use [R](https://www.r-project.org/) and [the tidyverse](https://www.tidyverse.org/).
+I have 20+ years of experience coding in R, 8+ years with Python in on-prem and cloud environments.
+
+I love both R and Python. To me, these are just the tools of trades and I use the one that is the most appropriate for the problem at hand. 
+
+I am passionate about teaching and sharing my experience with early career data professionals. I am the founder and chief instructor at [dataskool](https://dataskool.org), an online learning platform in Bangla language for approachable data science and AI training.
 
 :::
 
