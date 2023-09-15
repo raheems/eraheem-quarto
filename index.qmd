@@ -32,7 +32,7 @@ format:
 
 ::: {.g-col-12 .g-col-sm-8}
 
-I'm a healthcare data scientist with a statistics background. As a Principal Data Scientist at [ICON](https://www.iconplc.com), I currently support [Incyte Pharmaceutical Company](htts://incyte.com) in their Data Science and Innovation group.
+I'm a data scientist with a Ph.D. degree in statistics. As a Principal Clinical Data Scientist at [ICON](https://www.iconplc.com), I currently support [Incyte Pharmaceutical Company](htts://incyte.com) in their Data Science and Innovation group.
 
 I have been supporting healthcare providers (hospitals/EHR data), payors (medical claims), and bio-pharma (RWD, RWE, clinical trials) for over 8 years now.
 
