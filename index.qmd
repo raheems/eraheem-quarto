@@ -32,15 +32,13 @@ format:
 
 ::: {.g-col-12 .g-col-sm-8}
 
-I'm a data scientist with a Ph.D. degree in statistics. As a Principal Clinical Data Scientist at [ICON](https://www.iconplc.com), I currently support [Incyte Pharmaceutical Company](htts://incyte.com) in their Data Science and Innovation group.
+I am a data scientist holding a Ph.D. in statistics and currently serving as a Principal Clinical Data Scientist at [ICON](https://www.iconplc.com), where I provide support to [Incyte Pharmaceutical Company](https://incyte.com) within their Data Science and Innovation group. 
 
-I have been supporting healthcare providers (hospitals/EHR data), payors (medical claims), and bio-pharma (RWD, RWE, clinical trials) for over 8 years now.
+Over the past 8 years, my experience has covered diverse areas, including assisting healthcare providers with hospital and electronic health record (EHR) data, supporting payors with medical claims analytics, and collaborating with bio-pharma on Real-World Data (RWD) for Real-World Evidence (RWE) generation, and clinical trials data.
 
-I have 20+ years of experience coding in R, 8+ years with Python in on-prem and cloud environments.
+In terms of programming expertise, I have more than 20 years of experience in R and over 8 years with Python, both in on-premises and cloud computing environments. I am proficient in both languages and select the most suitable one depending on the specific problem.
 
-I love both R and Python. To me, these are just the tools of trades and I use the one that is the most appropriate for the problem at hand. 
-
-I am passionate about teaching and sharing my experience with early career data professionals. I am the founder and chief instructor at [dataskool](https://dataskool.org), an online learning platform in Bangla language for approachable data science and AI training.
+Furthermore, I have a strong passion for teaching and sharing my knowledge with emerging data professionals. I am the founder and chief instructor at [dataskool](https://dataskool.org), an online learning platform dedicated to providing accessible data science and AI training for Bengali-speaking audiences.
 
 :::
 
