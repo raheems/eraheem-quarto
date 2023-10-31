@@ -28,6 +28,7 @@ $light-orange:  #FB9E07 !default;
 $yellow:  #F6D645 !default;
 $green:   #118230 !default;
 $teal:    #20c997 !default;
+$teal-100: #088A85 !default;
 $cyan:    #3093CF !default;
 
 $primary:   $pink !default;
@@ -78,7 +79,7 @@ $toc-color: $orange;
 $toc-font-size: 1em;
 
 // Navbar
-$navbar-bg: $purple !default;
+$navbar-bg: $gray-900 !default;
 $navbar-fg: $white !default;
 $navbar-hl: $light-orange !default;
 
@@ -350,8 +351,8 @@ pre.text, pre.sourceCode, .cell-output pre {
         margin-top: 1.5em;
 
         .quarto-category {
-            background-color: shift-color($purple, -25%);
-            border-color: shift-color($purple, -45%);
+            background-color: shift-color($teal-100, -25%);
+            border-color: shift-color($teal-100, -45%);
             color: $white;
             font-size: 0.65em;
             opacity: 1;

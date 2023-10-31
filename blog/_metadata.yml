@@ -5,7 +5,7 @@ description-meta: "{{< meta description >}}"
 date-format: "dddd, MMMM D, YYYY"
 
 # Enable banner style title blocks
-title-block-banner: "#170C3A"
+title-block-banner: "#8A0829"
 
 # Add blog-post class to the banner header area
 format: 

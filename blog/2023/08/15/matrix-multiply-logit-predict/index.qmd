@@ -1,6 +1,6 @@
 ---
 title: "Manually generate predicted values for logistic regression with matrix multiplication in R"
-date: 2023-08-15
+date: 2023-10-29
 description: "This is like basic stats stuff, but I can never remember how to do it—here's how to use matrix multiplication to replicate the results of `predict()`"
 image: social-image.png
 twitter-card:
@@ -11,8 +11,9 @@ categories:
   - r
   - statistics
   - regression
-doi: 10.59350/qba9a-b3561
+# doi: 10.59350/qba9a-b3561
 citation: true
+draft: false
 ---
 
 ```{r setup, include=FALSE}
