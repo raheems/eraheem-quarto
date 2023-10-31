@@ -5,15 +5,11 @@
   },
   {
     "listing": "/atom.html",
-    "items": [
-      "/blog/2023/08/15/matrix-multiply-logit-predict/index.html"
-    ]
+    "items": []
   },
   {
     "listing": "/blog/index.html",
-    "items": [
-      "/blog/2023/08/15/matrix-multiply-logit-predict/index.html"
-    ]
+    "items": []
   },
   {
     "listing": "/research/index.html",
