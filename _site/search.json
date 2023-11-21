@@ -123,14 +123,14 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "November 20, 2023\n        \n        \n            Rendering Quarto document with Anaconda Python environment in RStudio/Posit\n            \n                \n                    Python\n                \n                \n                    Quarto\n                \n                \n                    Anaconda\n                \n                \n                    usethis\n                \n            \n            A step-by-step guideline on setting up a quarto page with a Jupyter backend in Rstudio/Posit. This article outlines all the steps to correctly set up your Anaconda python environment and use with RStudio/Posit.\n        \n        \n            \n        \n    \n\n\nNo matching items"
+    "text": "November 20, 2023\n        \n        \n            Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit\n            \n                \n                    Python\n                \n                \n                    Quarto\n                \n                \n                    Anaconda\n                \n                \n                    usethis\n                \n            \n            A step-by-step guideline on setting up a quarto page with a Jupyter backend in Rstudio/Posit. This article outlines all the steps to correctly set up your Anaconda Python environment and use with RStudio/Posit.\n        \n        \n            \n        \n    \n\n\nNo matching items"
   },
   {
     "objectID": "blog/index.html#section",
     "href": "blog/index.html#section",
     "title": "Blog",
     "section": "",
-    "text": "November 20, 2023\n        \n        \n            Rendering Quarto document with Anaconda Python environment in RStudio/Posit\n            \n                \n                    Python\n                \n                \n                    Quarto\n                \n                \n                    Anaconda\n                \n                \n                    usethis\n                \n            \n            A step-by-step guideline on setting up a quarto page with a Jupyter backend in Rstudio/Posit. This article outlines all the steps to correctly set up your Anaconda python environment and use with RStudio/Posit.\n        \n        \n            \n        \n    \n\n\nNo matching items"
+    "text": "November 20, 2023\n        \n        \n            Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit\n            \n                \n                    Python\n                \n                \n                    Quarto\n                \n                \n                    Anaconda\n                \n                \n                    usethis\n                \n            \n            A step-by-step guideline on setting up a quarto page with a Jupyter backend in Rstudio/Posit. This article outlines all the steps to correctly set up your Anaconda Python environment and use with RStudio/Posit.\n        \n        \n            \n        \n    \n\n\nNo matching items"
   },
   {
     "objectID": "research/articles/chaudhry-dotson-heiss-2021/index.html#important-links",
@@ -254,63 +254,63 @@
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html",
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html",
-    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "title": "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit",
     "section": "",
     "text": "Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in an Anaconda Python environment in RStudio?\nIt is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. You might have to spend some time to figure out from Stackoverflow and some GitHub issue queues.\nI’ve figured it out after spending a couple of hours. I wanted to document this in case I need it later, or someone else might need it.\nHere it is."
   },
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#check-your-current-jupyter-engine",
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#check-your-current-jupyter-engine",
-    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "title": "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit",
     "section": "Check your current Jupyter engine",
     "text": "Check your current Jupyter engine\nFrom within Rstudio, use the Terminal tab (bottom left panel). It should open the terminal within Rstudio. On the CLI, type the following.\nquarto check jupyter\nThis should produce an output like the following:\n[✓] Checking Python 3 installation....OK\n      Version: 3.8.13 (Conda)\n      Path: /Users/enayetraheem/opt/anaconda3/envs/ibis3813/bin/python\n      Jupyter: 4.10.0\n      Kernels: python3\n\n[✓] Checking Jupyter engine render....OK\nNotice that it shows the current Python engine, which is /Users/enayetraheem/opt/anaconda3/envs/ibis3813. Also, we can see the Jupyter version here.\nWhere does Rstudio get this information from?\nThe short answer is: from the global .Renviron file. In the current Renviron, this is what I have.\nQUARTO_PYTHON=/Users/enayetraheem/opt/anaconda3/envs/ibis3813/bin/python\nIf you want to use this Python environment, then you are good. It should run Python without issues. Also, ensure new libraries are installed in this environment for you to use in this notebook."
   },
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#the-problem",
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#the-problem",
-    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "title": "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit",
     "section": "The problem",
     "text": "The problem\nThe problem occurs when you want to use a different environment! The one you see above is the global environment. RStudio will choose this unless you specify a project-specific .Renviron.\nThe solution seems easy: Do you want to set the project-specific environment from the Tools?\nLet’s take a look at the current setup.\n\nThere is no Python interpreter set for the current project. We can select one, but that won’t work.\nLet’s set the Python interpreter to be the following:\n\nLet’s restart RStudio. And check back, Quarto.\nWhen you run quarto check jupyter, you will get the same response as before, not the Python you’ve set up with, as shown in the screenshot above."
   },
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#the-solution",
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#the-solution",
-    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "title": "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit",
     "section": "The solution",
     "text": "The solution\nThe solution is to set project-specific .Renviron\n\nusethis::edit_r_environ(scope = \"project\")\n\nWhen you execute this, it will open up the editor, where you can put the following information.\nQUARTO_PYTHON=/Users/enayetraheem/opt/anaconda3/envs/chasing-python/bin/python3.11"
   },
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#restart",
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#restart",
-    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "title": "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit",
     "section": "Restart",
     "text": "Restart\nMake sure to restart your entire RStudio and then reopen the project. Then run in the terminal the\nquarto check jupyter\nThis should render the following.\n\n[✓] Checking Python 3 installation....OK\n      Version: 3.11.5 (Conda)\n      Path: /Users/enayetraheem/opt/anaconda3/envs/chasing-python/bin/python3.11\n      Jupyter: 5.5.0\n      Kernels: python3\n\n\n[✓] Checking Jupyter engine render....OK"
   },
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#summary",
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#summary",
-    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "title": "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit",
     "section": "Summary",
     "text": "Summary\nThis article demonstrated the steps to set up a Python interpreter in a local RStudio project. We used the Anaconda Python package manager to create and manage the envs. Then we use usethis::edit_r_environ() library with scope=\"project\" argument to edit the project-specific Python interpreter."
   },
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#steps-at-a-glance",
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#steps-at-a-glance",
-    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "title": "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit",
     "section": "Steps at a glance",
     "text": "Steps at a glance\n\nCreate a Python environment using Anaconda distribution. I use this because it is easy to use\nInstall the necessary libraries in that environment\nCreate a Quarto project in RStudio\nSet the project-specific Renviron\n\nSet the Python interpreter for your project in Rstudio\nCheck if Quarto and Jupyter are properly connected to the Python version you want\nRender"
   },
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#setting-up-anaconda",
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#setting-up-anaconda",
-    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "title": "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit",
     "section": "Setting up Anaconda",
     "text": "Setting up Anaconda\nI will skip this section, assuming that you either have Anaconda installed or are managing your Python environment in other ways. If you need help with that, please search on YouTube; there are good videos on this topic."
   },
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#setting-up-rstudio",
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#setting-up-rstudio",
-    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "title": "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit",
     "section": "Setting up RStudio",
     "text": "Setting up RStudio\nThe first is to create a separate Rstudio project to house your code and documents. We’re using Python with the Jupyter engine to run the Quarto document."
   },

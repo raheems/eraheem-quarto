@@ -1,7 +1,7 @@
 ---
-title: "Rendering Quarto document with Anaconda Python environment in RStudio/Posit"
+title: "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit"
 date: 2023-11-20
-description: "A step-by-step guideline on setting up a quarto page with a Jupyter backend in Rstudio/Posit. This article outlines all the steps to correctly set up your Anaconda python environment and use with RStudio/Posit."
+description: "A step-by-step guideline on setting up a quarto page with a Jupyter backend in Rstudio/Posit. This article outlines all the steps to correctly set up your Anaconda Python environment and use with RStudio/Posit."
 image: rstudio-quarto-cat-python-env.png
 twitter-card:
   image: "rstudio-quarto-cat-python-env.png"

@@ -13,7 +13,7 @@
 <generator>quarto-1.3.450</generator>
 <lastBuildDate>Mon, 20 Nov 2023 05:00:00 GMT</lastBuildDate>
 <item>
-  <title>Rendering Quarto document with Anaconda Python environment in RStudio/Posit</title>
+  <title>Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit</title>
   <dc:creator>Enayetur Raheem</dc:creator>
   <link>https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html</link>
   <description><![CDATA[ <p>Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in an Anaconda Python environment in RStudio?</p>
@@ -154,15 +154,16 @@ font-style: inherit;">[✓]</span> Checking Jupyter engine render....OK</span></
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{raheem2023,
   author = {Raheem, Enayetur},
-  title = {Rendering {Quarto} Document with {Anaconda} {Python}
-    Environment in {RStudio/Posit}},
+  title = {Rendering {Quarto} Document with Project-Specific {Anaconda}
+    {Python} Environment in {RStudio/Posit}},
   date = {2023-11-20},
   url = {https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-raheem2023" class="csl-entry quarto-appendix-citeas">
-Raheem, Enayetur. 2023. <span>“Rendering Quarto Document with Anaconda
-Python Environment in RStudio/Posit.”</span> November 20, 2023. <a href="https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config">https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config</a>.
+Raheem, Enayetur. 2023. <span>“Rendering Quarto Document with
+Project-Specific Anaconda Python Environment in RStudio/Posit.”</span>
+November 20, 2023. <a href="https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config">https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config</a>.
 </div></div></section></div> ]]></description>
   <category>Python</category>
   <category>Quarto</category>
