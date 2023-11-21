@@ -16,26 +16,26 @@
   <title>Rendering Quarto document with Anaconda Python environment in RStudio/Posit</title>
   <dc:creator>Enayetur Raheem</dc:creator>
   <link>https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html</link>
-  <description><![CDATA[ <p>If you were trying to run a quarto document in Rstudio, it will run fine as long as your default python version has the correct libaries installed. But what if you are working on a project where project specific libraries are to be installed and used. And all to be setup in a python environment in RStudio?</p>
-<p>It is possible. However, setting up a custom ananconda enrironment and using that specific python version is not that obvious. It is possible, however, if you have some time to spare to figure out from stackoverflow and some github issue queue and elsewhere.</p>
-<p>Thankfully, I’ve figured it out after spending a couple of hours. I thought I would document this just in case I need it later or someone else might need it.</p>
+  <description><![CDATA[ <p>Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in a Python environment in RStudio?</p>
+<p>It is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. However, It is possible if you have some time to figure out from Stackoverflow and some GitHub issue queues.</p>
+<p>Thankfully, I’ve figured it out after spending a couple of hours. I wanted to document this in case I need it later, or someone else might need it.</p>
 <p>Here it is.</p>
 <section id="steps-at-a-glance" class="level2"><h2 class="anchored" data-anchor-id="steps-at-a-glance">Steps at a glance</h2>
 <ul>
-<li>Create python environment using <a href="https://www.anaconda.com/download">Anaconda distribution</a>. I use this because it is easy to use</li>
+<li>Create a Python environment using <a href="https://www.anaconda.com/download">Anaconda distribution</a>. I use this because it is easy to use</li>
 <li>Install the necessary libraries in that environment</li>
 <li>Create a Quarto project in RStudio</li>
 <li>Set the project-specific <code>Renviron</code>
 </li>
 <li>Set the Python interpreter for your project in Rstudio</li>
-<li>Check if quarto and Jupyter is properly connected to the python version you want</li>
+<li>Check if Quarto and Jupyter are properly connected to the Python version you want</li>
 <li>Render</li>
 </ul></section><section id="setting-up-anaconda" class="level2"><h2 class="anchored" data-anchor-id="setting-up-anaconda">Setting up Anaconda</h2>
-<p>I will skip this section assuming that you either have Anaconda installed or you are managing your python environment in some other ways. If you need help with that, please search on YouTube and there are good videos on this topic.</p>
+<p>I will skip this section, assuming that you either have Anaconda installed or are managing your Python environment in other ways. If you need help with that, please search on YouTube; there are good videos on this topic.</p>
 </section><section id="setting-up-rstudio" class="level2"><h2 class="anchored" data-anchor-id="setting-up-rstudio">Setting up RStudio</h2>
-<p>The first this is to to create a separate Rstudio project to house your code and documents. We’re obviously using Pyhon with the Jupyter engine to run the Quarto document.</p>
-</section><section id="check-your-current-jupyter-engine" class="level2"><h2 class="anchored" data-anchor-id="check-your-current-jupyter-engine">Check your current jupyter engine</h2>
-<p>From within Rstudio, uset the Terminal tab (bottom left panel). It should open termina within Rstudio. On the CLI, type the following</p>
+<p>The first is to create a separate Rstudio project to house your code and documents. We’re using Python with the Jupyter engine to run the Quarto document.</p>
+</section><section id="check-your-current-jupyter-engine" class="level2"><h2 class="anchored" data-anchor-id="check-your-current-jupyter-engine">Check your current Jupyter engine</h2>
+<p>From within Rstudio, use the Terminal tab (bottom left panel). It should open the terminal within Rstudio. On the CLI, type the following.</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">quarto</span> check jupyter</span></code></pre></div>
@@ -65,7 +65,7 @@ font-style: inherit;">Kernels:</span> python3</span>
 <span id="cb2-7"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[✓]</span> Checking Jupyter engine render....OK</span></code></pre></div>
-<p>Notice that it shows the current Python engine, which is <code>/Users/enayetraheem/opt/anaconda3/envs/ibis3813</code>. Also we can see the Jupyter version here.</p>
+<p>Notice that it shows the current Python engine, which is <code>/Users/enayetraheem/opt/anaconda3/envs/ibis3813</code>. Also, we can see the Jupyter version here.</p>
 <p><strong>Where does Rstudio get this information from?</strong></p>
 <p>The short answer is: from the global <code>.Renviron</code> file. In the current Renviron, this is what I have.</p>
 <div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="va" style="color: #111111;
@@ -73,19 +73,19 @@ background-color: null;
 font-style: inherit;">QUARTO_PYTHON</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>/Users/enayetraheem/opt/anaconda3/envs/ibis3813/bin/python</span></code></pre></div>
-<p>If you want to use this python environment, then you are good. It should run Pyton without issues. Also make sure new libraries are installed in this environment for you to use them in this notebook.</p>
+<p>If you want to use this Python environment, then you are good. It should run Python without issues. Also, ensure new libraries are installed in this environment for you to use in this notebook.</p>
 </section><section id="the-problem" class="level2"><h2 class="anchored" data-anchor-id="the-problem">The problem</h2>
-<p>The problem occurs when you want to use a different environment! The one you see above is the global environment. This will be chosen by RStudio unless you specify a project specific <code>.Renviron</code>.</p>
-<p>The solution seems easy that you want to set the project specific environment from the Tools?</p>
-<p>Lets take a look at the current setup.</p>
+<p>The problem occurs when you want to use a different environment! The one you see above is the global environment. RStudio will choose this unless you specify a project-specific <code>.Renviron</code>.</p>
+<p>The solution seems easy: Do you want to set the project-specific environment from the Tools?</p>
+<p>Let’s take a look at the current setup.</p>
 <p><img src="https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/rstudio-project-config1.png" class="img-fluid"></p>
-<p>There is no Python interpreter set for the current project. We can set one but that won’t actually work.</p>
-<p>Let’s set the python interpreter to be the following:</p>
+<p>There is no Python interpreter set for the current project. We can select one, but that won’t work.</p>
+<p>Let’s set the Python interpreter to be the following:</p>
 <p><img src="https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/rstudio-project-config2.png" class="img-fluid"></p>
-<p>Now lets restart RStudio just in case. And check back quarto</p>
-<p>When you run <code>quarto check jupyer</code>, you would get the same response as before, and not the Pyton you’ve set up with as the screenshot above.</p>
+<p>Let’s restart RStudio. And check back, Quarto.</p>
+<p>When you run <code>quarto check jupyter</code>, you will get the same response as before, not the Python you’ve set up with, as shown in the screenshot above.</p>
 </section><section id="the-solution" class="level2"><h2 class="anchored" data-anchor-id="the-solution">The solution</h2>
-<p>The solution is to set project specific <code>.Renviron</code></p>
+<p>The solution is to set project-specific <code>.Renviron</code></p>
 <div class="cell">
 <div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -103,7 +103,7 @@ font-style: inherit;">"project"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div>
 </div>
-<p>When you execute this, it will open up the editor where you can put the following information</p>
+<p>When you execute this, it will open up the editor, where you can put the following information.</p>
 <div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">QUARTO_PYTHON</span><span class="op" style="color: #5E5E5E;
@@ -114,7 +114,7 @@ font-style: inherit;">=</span>/Users/enayetraheem/opt/anaconda3/envs/chasing-pyt
 <div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">quarto</span> check jupyter</span></code></pre></div>
-<p>which should render the following</p>
+<p>This should render the following.</p>
 <div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"></span>
 <span id="cb7-2"><span class="ex" style="color: null;
 background-color: null;
@@ -143,7 +143,7 @@ font-style: inherit;">Kernels:</span> python3</span>
 background-color: null;
 font-style: inherit;">[✓]</span> Checking Jupyter engine render....OK</span></code></pre></div>
 </section><section id="summary" class="level2"><h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>This article demonstrated the steps to set a Python interpreter in a local RStudio project. We used Anaconda Python package manager to create and manage the envs. Then we use <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code> library with <code>scope="project"</code> argument to edit the project specific python interpreter.</p>
+<p>This article demonstrated the steps to set up a Python interpreter in a local RStudio project. We used the Anaconda Python package manager to create and manage the envs. Then we use <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code> library with <code>scope="project"</code> argument to edit the project-specific Python interpreter.</p>
 </section><section id="credits" class="level2"><h2 class="anchored" data-anchor-id="credits">Credits</h2>
 <p>The <a href="https://www.bing.com/images/create/rendering-quarto-document-in-rstudio-with-anaconda/1-655beb394b934e4596477b701667f46f?id=e2U5qsGTLirwwqCzs3KP%2bA%3d%3d&amp;view=detailv2&amp;idpp=genimg&amp;FORM=GCRIDP&amp;mode=overlay">social sharing image</a> was generated using Bing with the prompt “Rendering Quarto document in Rstudio with Anaconda Python environment”</p>
 
@@ -162,9 +162,9 @@ font-style: inherit;">[✓]</span> Checking Jupyter engine render....OK</span></
 Raheem, Enayetur. 2023. <span>“Rendering Quarto Document with Anaconda
 Python Environment in RStudio/Posit.”</span> November 20, 2023. <a href="https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config">https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config</a>.
 </div></div></section></div> ]]></description>
-  <category>python</category>
-  <category>quarto</category>
-  <category>anaconda</category>
+  <category>Python</category>
+  <category>Quarto</category>
+  <category>Anaconda</category>
   <category>usethis</category>
   <guid>https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html</guid>
   <pubDate>Mon, 20 Nov 2023 05:00:00 GMT</pubDate>
