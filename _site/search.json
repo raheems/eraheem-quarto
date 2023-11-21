@@ -256,7 +256,7 @@
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html",
     "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
     "section": "",
-    "text": "Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in a Python environment in RStudio?\nIt is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. However, It is possible if you have some time to figure out from Stackoverflow and some GitHub issue queues.\nThankfully, I’ve figured it out after spending a couple of hours. I wanted to document this in case I need it later, or someone else might need it.\nHere it is."
+    "text": "Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in a Python environment in RStudio?\nIt is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. It is possible if you have some time to figure out from Stackoverflow and some GitHub issue queues.\nThankfully, I’ve figured it out after spending a couple of hours. I wanted to document this in case I need it later, or someone else might need it.\nHere it is."
   },
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#check-your-current-jupyter-engine",
