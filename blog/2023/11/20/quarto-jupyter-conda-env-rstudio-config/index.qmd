@@ -96,7 +96,7 @@ If you want to use this Python environment, then you are good. It should run Pyt
 
 The problem occurs when you want to use a different environment! The one you see above is the global environment. RStudio will choose this unless you specify a project-specific `.Renviron`.
 
-The solution seems easy: Do you want to set the project-specific environment from the Tools?
+The solution seems easy.
 
 Let's take a look at the current setup.
 

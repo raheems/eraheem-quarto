@@ -270,7 +270,7 @@
     "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#the-problem",
     "title": "Rendering Quarto document with project-specific Anaconda Python environment in RStudio/Posit",
     "section": "The problem",
-    "text": "The problem\nThe problem occurs when you want to use a different environment! The one you see above is the global environment. RStudio will choose this unless you specify a project-specific .Renviron.\nThe solution seems easy: Do you want to set the project-specific environment from the Tools?\nLet’s take a look at the current setup.\n\nThere is no Python interpreter set for the current project. We can select one, but that won’t work.\nLet’s set the Python interpreter to be the following:\n\nLet’s restart RStudio. And check back, Quarto.\nWhen you run quarto check jupyter, you will get the same response as before, not the Python you’ve set up with, as shown in the screenshot above."
+    "text": "The problem\nThe problem occurs when you want to use a different environment! The one you see above is the global environment. RStudio will choose this unless you specify a project-specific .Renviron.\nThe solution seems easy.\nLet’s take a look at the current setup.\n\nThere is no Python interpreter set for the current project. We can select one, but that won’t work.\nLet’s set the Python interpreter to be the following:\n\nLet’s restart RStudio. And check back, Quarto.\nWhen you run quarto check jupyter, you will get the same response as before, not the Python you’ve set up with, as shown in the screenshot above."
   },
   {
     "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#the-solution",

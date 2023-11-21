@@ -80,7 +80,7 @@ font-style: inherit;">=</span>/Users/enayetraheem/opt/anaconda3/envs/ibis3813/bi
 <p>If you want to use this Python environment, then you are good. It should run Python without issues. Also, ensure new libraries are installed in this environment for you to use in this notebook.</p>
 </section><section id="the-problem" class="level2"><h2 class="anchored" data-anchor-id="the-problem">The problem</h2>
 <p>The problem occurs when you want to use a different environment! The one you see above is the global environment. RStudio will choose this unless you specify a project-specific <code>.Renviron</code>.</p>
-<p>The solution seems easy: Do you want to set the project-specific environment from the Tools?</p>
+<p>The solution seems easy.</p>
 <p>Let’s take a look at the current setup.</p>
 <p><img src="https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/rstudio-project-config1.png" class="img-fluid"></p>
 <p>There is no Python interpreter set for the current project. We can select one, but that won’t work.</p>
