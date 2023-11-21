@@ -23,7 +23,7 @@ project:
     - "y_key_31e0c4105fc75710.html"
     - "pgp_ath.asc.txt"
 
-freeze: true
+freeze: auto
 
 bibliography: files/bib/references.bib
 csl: files/bib/chicago-author-date.csl

@@ -1,47 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.eraheem.com/index.html</loc>
-    <lastmod>2023-11-21T02:31:31.441Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.eraheem.com/uses/index.html</loc>
-    <lastmod>2023-11-20T22:27:19.868Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.eraheem.com/talks/index.html</loc>
-    <lastmod>2023-11-20T22:27:19.202Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.eraheem.com/research/chapters/heiss-causal-inference-2021/index.html</loc>
-    <lastmod>2023-11-20T22:27:18.448Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.eraheem.com/now/index.html</loc>
-    <lastmod>2023-11-20T22:27:17.568Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.eraheem.com/atom.html</loc>
-    <lastmod>2023-11-21T02:46:46.090Z</lastmod>
-  </url>
-  <url>
     <loc>https://www.eraheem.com/blog/index.html</loc>
-    <lastmod>2023-11-21T02:46:46.432Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.eraheem.com/research/articles/chaudhry-dotson-heiss-2021/index.html</loc>
-    <lastmod>2023-11-20T22:27:18.042Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.eraheem.com/research/index.html</loc>
-    <lastmod>2023-11-20T22:27:18.807Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.eraheem.com/teaching/index.html</loc>
-    <lastmod>2023-11-20T22:27:19.564Z</lastmod>
+    <lastmod>2023-11-21T14:56:18.988Z</lastmod>
   </url>
   <url>
     <loc>https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html</loc>
-    <lastmod>2023-11-21T02:46:45.690Z</lastmod>
+    <lastmod>2023-11-21T14:56:24.055Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.eraheem.com/atom.html</loc>
+    <lastmod>2023-11-21T14:56:18.634Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.eraheem.com/uses/index.html</loc>
+    <lastmod>2023-11-21T14:56:22.213Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.eraheem.com/talks/index.html</loc>
+    <lastmod>2023-11-21T14:56:21.519Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.eraheem.com/research/chapters/heiss-causal-inference-2021/index.html</loc>
+    <lastmod>2023-11-21T14:56:20.748Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.eraheem.com/now/index.html</loc>
+    <lastmod>2023-11-21T14:56:19.845Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.eraheem.com/research/articles/chaudhry-dotson-heiss-2021/index.html</loc>
+    <lastmod>2023-11-21T14:56:20.344Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.eraheem.com/research/index.html</loc>
+    <lastmod>2023-11-21T14:56:21.098Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.eraheem.com/teaching/index.html</loc>
+    <lastmod>2023-11-21T14:56:21.898Z</lastmod>
   </url>
 </urlset>

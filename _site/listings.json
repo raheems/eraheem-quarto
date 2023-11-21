@@ -1,7 +1,9 @@
 [
   {
-    "listing": "/talks/index.html",
-    "items": []
+    "listing": "/blog/index.html",
+    "items": [
+      "/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html"
+    ]
   },
   {
     "listing": "/atom.html",
@@ -10,10 +12,8 @@
     ]
   },
   {
-    "listing": "/blog/index.html",
-    "items": [
-      "/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html"
-    ]
+    "listing": "/talks/index.html",
+    "items": []
   },
   {
     "listing": "/research/index.html",
