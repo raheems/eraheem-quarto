@@ -231,11 +231,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><p>Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in an Anaconda Python environment in RStudio?</p>
+<p>It is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. You might have to spend some time to figure out from Stackoverflow and some GitHub issue queues.</p>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full"><p><img src="rstudio-quarto-cat-python-env.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption margin-caption">The <a href="https://www.bing.com/images/create/rendering-quarto-document-in-rstudio-with-anaconda/1-655beb394b934e4596477b701667f46f?id=e2U5qsGTLirwwqCzs3KP%2bA%3d%3d&amp;view=detailv2&amp;idpp=genimg&amp;FORM=GCRIDP&amp;mode=overlay">social sharing image</a> was generated using Bing with the prompt “Rendering Quarto document in Rstudio with Anaconda Python environment”</figcaption></figure>
 </div>
-<p>It is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. You might have to spend some time to figure out from Stackoverflow and some GitHub issue queues.</p>
 <p>I’ve figured it out after spending a couple of hours. I wanted to document this in case I need it later, or someone else might need it.</p>
 <p>Here it is.</p>
 <section id="steps-at-a-glance" class="level2"><h2 class="anchored" data-anchor-id="steps-at-a-glance">Steps at a glance</h2>
@@ -637,9 +637,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in an Anaconda Python environment in RStudio?</span>
 <span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">The [social sharing image](https://www.bing.com/images/create/rendering-quarto-document-in-rstudio-with-anaconda/1-655beb394b934e4596477b701667f46f?id=e2U5qsGTLirwwqCzs3KP%2bA%3d%3d&amp;view=detailv2&amp;idpp=genimg&amp;FORM=GCRIDP&amp;mode=overlay) was generated using Bing with the prompt "Rendering Quarto document in Rstudio with Anaconda Python environment"</span><span class="co">](rstudio-quarto-cat-python-env.png)</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>It is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. You might have to spend some time to figure out from Stackoverflow and some GitHub issue queues.</span>
 <span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>It is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. You might have to spend some time to figure out from Stackoverflow and some GitHub issue queues.</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">The [social sharing image](https://www.bing.com/images/create/rendering-quarto-document-in-rstudio-with-anaconda/1-655beb394b934e4596477b701667f46f?id=e2U5qsGTLirwwqCzs3KP%2bA%3d%3d&amp;view=detailv2&amp;idpp=genimg&amp;FORM=GCRIDP&amp;mode=overlay) was generated using Bing with the prompt "Rendering Quarto document in Rstudio with Anaconda Python environment"</span><span class="co">](rstudio-quarto-cat-python-env.png)</span></span>
 <span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>I've figured it out after spending a couple of hours. I wanted to document this in case I need it later, or someone else might need it.</span>
 <span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
