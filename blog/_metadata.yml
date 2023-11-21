@@ -13,7 +13,7 @@ format:
     code-tools: true
     comments:
       giscus: 
-        repo: raheems/eraheem-quarto
+        repo: raheems/eraheem-comments
         category: Blog comments
         category-id: DIC_kwDOIg6EJc4CSz92
         mapping: pathname

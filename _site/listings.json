@@ -1,0 +1,29 @@
+[
+  {
+    "listing": "/talks/index.html",
+    "items": []
+  },
+  {
+    "listing": "/atom.html",
+    "items": [
+      "/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html"
+    ]
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": [
+      "/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html"
+    ]
+  },
+  {
+    "listing": "/research/index.html",
+    "items": [
+      "/research/articles/chaudhry-dotson-heiss-2021/index.html",
+      "/research/chapters/heiss-causal-inference-2021/index.html"
+    ]
+  },
+  {
+    "listing": "/teaching/index.html",
+    "items": []
+  }
+]

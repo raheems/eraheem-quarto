@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Enayetur Raheem&#39;s blog</title>
+<link>https://www.eraheem.com/atom.html</link>
+<atom:link href="https://www.eraheem.com/atom.xml" rel="self" type="application/rss+xml"/>
+<description>Enayetur Raheem&#39;s blog</description>
+<language>en</language>
+<generator>quarto-1.3.450</generator>
+<lastBuildDate>Mon, 20 Nov 2023 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Rendering Quarto document with Anaconda Python environment in RStudio/Posit</title>
+  <dc:creator>Enayetur Raheem</dc:creator>
+  <link>https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>If you were trying to run a quarto document in Rstudio, it will run fine as long as your default python version has the correct libaries installed. But what if you are working on a project where project specific libraries are to be installed and used. And all to be setup in a python environment in RStudio?</p>
+<p>It is possible. However, setting up a custom ananconda enrironment and using that specific python version is not that obvious. It is possible, however, if you have some time to spare to figure out from stackoverflow and some github issue queue and elsewhere.</p>
+<p>Thankfully, I’ve figured it out after spending a couple of hours. I thought I would document this just in case I need it later or someone else might need it.</p>
+<p>Here it is.</p>
+<section id="steps-at-a-glance" class="level1">
+<h1>Steps at a glance</h1>
+<ul>
+<li>Create python environment using <a href="https://www.anaconda.com/download">Anaconda distribution</a>. I use this because it is easy to use</li>
+<li>Install the necessary libraries in that environment</li>
+<li>Create a Quarto project in RStudio</li>
+<li>Set the project-specific <code>Renviron</code></li>
+<li>Set the Python interpreter for your project in Rstudio</li>
+<li>Check if quarto and Jupyter is properly connected to the python version you want</li>
+<li>Render</li>
+</ul>
+</section>
+<section id="setting-up-anaconda" class="level1">
+<h1>Setting up Anaconda</h1>
+<p>I will skip this section assuming that you either have Anaconda installed or you are managing your python environment in some other ways. If you need help with that, please search on YouTube and there are good videos on this topic.</p>
+</section>
+<section id="setting-up-rstudio" class="level1">
+<h1>Setting up RStudio</h1>
+<p>The first this is to to create a separate Rstudio project to house your code and documents. We’re obviously using Pyhon with the Jupyter engine to run the Quarto document.</p>
+<section id="check-your-current-jupyter-engine" class="level2">
+<h2>Check your current jupyter engine</h2>
+<p>From within Rstudio, uset the Terminal tab (bottom left panel). It should open termina within Rstudio. On the CLI, type the following</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">quarto</span> check jupyter</span></code></pre></div>
+<p>This should produce an output like the following:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[✓]</span> Checking Python 3 installation....OK</span>
+<span id="cb2-2">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Version:</span> 3.8.13 <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Conda</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb2-3">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Path:</span> /Users/enayetraheem/opt/anaconda3/envs/ibis3813/bin/python</span>
+<span id="cb2-4">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Jupyter:</span> 4.10.0</span>
+<span id="cb2-5">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Kernels:</span> python3</span>
+<span id="cb2-6"></span>
+<span id="cb2-7"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[✓]</span> Checking Jupyter engine render....OK</span></code></pre></div>
+<p>Notice that it shows the current Python engine, which is <code>/Users/enayetraheem/opt/anaconda3/envs/ibis3813</code>. Also we can see the Jupyter version here.</p>
+<p><strong>Where does Rstudio get this information from?</strong></p>
+<p>The short answer is: from the global <code>.Renviron</code> file. In the current Renviron, this is what I have.</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">QUARTO_PYTHON</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>/Users/enayetraheem/opt/anaconda3/envs/ibis3813/bin/python</span></code></pre></div>
+<p>If you want to use this python environment, then you are good. It should run Pyton without issues. Also make sure new libraries are installed in this environment for you to use them in this notebook.</p>
+</section>
+<section id="the-problem" class="level2">
+<h2>The problem</h2>
+<p>The problem occurs when you want to use a different environment! The one you see above is the global environment. This will be chosen by RStudio unless you specify a project specific <code>.Renviron</code>.</p>
+<p>The solution seems easy that you want to set the project specific environment from the Tools?</p>
+<p>Lets take a look at the current setup.</p>
+<p><img src="https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/rstudio-project-config1.png" class="margin-caption img-fluid"></p>
+<p>There is no Python interpreter set for the current project. We can set one but that won’t actually work.</p>
+<p>Let’s set the python interpreter to be the following:</p>
+<p><img src="https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/rstudio-project-config2.png" class="margin-caption img-fluid"></p>
+<p>Now lets restart RStudio just in case. And check back quarto</p>
+<p>When you run <code>quarto check jupyer</code>, you would get the same response as before, and not the Pyton you’ve set up with as the screenshot above.</p>
+</section>
+<section id="the-solution" class="level2">
+<h2>The solution</h2>
+<p>The solution is to set project specific <code>.Renviron</code></p>
+<div class="cell">
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb4-1">usethis<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">edit_r_environ</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scope =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"project"</span>)</span></code></pre></div>
+</div>
+<p>When you execute this, it will open up the editor where you can put the following information</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">QUARTO_PYTHON</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>/Users/enayetraheem/opt/anaconda3/envs/chasing-python/bin/python3.11</span></code></pre></div>
+</section>
+<section id="restart" class="level2">
+<h2>Restart</h2>
+<p>Make sure to restart your entire RStudio and then reopen the project. Then run in the terminal the</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">quarto</span> check jupyter</span></code></pre></div>
+<p>which should render the following</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"></span>
+<span id="cb7-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[✓]</span> Checking Python 3 installation....OK</span>
+<span id="cb7-3">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Version:</span> 3.11.5 <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Conda</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb7-4">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Path:</span> /Users/enayetraheem/opt/anaconda3/envs/chasing-python/bin/python3.11</span>
+<span id="cb7-5">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Jupyter:</span> 5.5.0</span>
+<span id="cb7-6">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Kernels:</span> python3</span>
+<span id="cb7-7"></span>
+<span id="cb7-8"></span>
+<span id="cb7-9"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[✓]</span> Checking Jupyter engine render....OK</span></code></pre></div>
+</section>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<p>This article demonstrated the steps to set a Python interpreter in a local RStudio project. We used Anaconda Python package manager to create and manage the envs. Then we use <code>usethis::edit_r_environ()</code> library with <code>scope="project"</code> argument to edit the project specific python interpreter.</p>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Enayetur Raheem</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Enayetur Raheem</span> <span class="hidden" data-render-id="quarto-int-navbar:About">About</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Blog">Blog</span> <span class="hidden" data-render-id="quarto-int-navbar:/blog/index.html">/blog/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:/atom.xml">/atom.xml</span> <span class="hidden" data-render-id="quarto-int-navbar:mailto:eraheem@dataskool.com">mailto:eraheem@dataskool.com</span> <span class="hidden" data-render-id="quarto-int-navbar:https://twitter.com/eraheem">https://twitter.com/eraheem</span> <span class="hidden" data-render-id="quarto-int-navbar:https://github.com/raheems">https://github.com/raheems</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.youtube.com/@eraheem">https://www.youtube.com/@eraheem</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.linkedin.com/in/raheems">https://www.linkedin.com/in/raheems</span> <span class="hidden" data-render-id="footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2023 Enayetur Raheem</span> <span class="faux-block">All content licensed under<br><a href="https://creativecommons.org/licenses/by/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> Creative Commons CC BY 4.0</a></span><br>
+</span> <span class="hidden" data-render-id="footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0001-8880-3649">0000-0001-8880-3649</a></span></span> <span class="hidden" data-render-id="footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/raheems/eraheem-quarto">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden" data-render-id="quarto-metatitle">Rendering Quarto document with Anaconda Python environment in RStudio/Posit | Enayetur Raheem</span> <span class="hidden" data-render-id="quarto-twittercardtitle">Rendering Quarto document with Anaconda Python environment in RStudio/Posit | Enayetur Raheem</span> <span class="hidden" data-render-id="quarto-ogcardtitle">Rendering Quarto document with Anaconda Python environment in RStudio/Posit | Enayetur Raheem</span> <span class="hidden" data-render-id="quarto-metasitename">Enayetur Raheem</span> <span class="hidden" data-render-id="quarto-twittercarddesc">A step by step guideline on how to setup a quarto page with a Jupyter backend in Rstudio/Posit. This article outlines all the steps to correctly setup your Anadonda python environment and use with RStudio/Posit.</span> <span class="hidden" data-render-id="quarto-ogcardddesc">A step by step guideline on how to setup a quarto page with a Jupyter backend in Rstudio/Posit. This article outlines all the steps to correctly setup your Anadonda python environment and use with RStudio/Posit.</span></p>
+</div>
+<!-- -->
+<div class="quarto-embedded-source-code">
+<div class="sourceCode" id="cb8" data-shortcodes="false" style="background: #f1f3f5;"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb8-2"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">title:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> "Rendering Quarto document with Anaconda Python environment in RStudio/Posit"</span></span>
+<span id="cb8-3"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">date:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> 2023-11-20</span></span>
+<span id="cb8-4"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">description:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> "A step by step guideline on how to setup a quarto page with a Jupyter backend in Rstudio/Posit. This article outlines all the steps to correctly setup your Anadonda python environment and use with RStudio/Posit."</span></span>
+<span id="cb8-5"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">image:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> rstudio-quarto-cat-python-env.png</span></span>
+<span id="cb8-6"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">twitter-card:</span></span>
+<span id="cb8-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  image: "rstudio-quarto-cat-python-env.png"</span></span>
+<span id="cb8-8"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">open-graph:</span></span>
+<span id="cb8-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  image: "rstudio-quarto-cat-python-env.png"</span></span>
+<span id="cb8-10"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">categories:</span></span>
+<span id="cb8-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  - python</span></span>
+<span id="cb8-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  - quarto</span></span>
+<span id="cb8-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  - anaconda</span></span>
+<span id="cb8-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  - usethis</span></span>
+<span id="cb8-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">  </span></span>
+<span id="cb8-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># doi: 10.59350/qba9a-b3561</span></span>
+<span id="cb8-17"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">citation:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> true</span></span>
+<span id="cb8-18"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">draft:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> false</span></span>
+<span id="cb8-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb8-20"></span>
+<span id="cb8-21"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```{r setup, include=FALSE}</span></span>
+<span id="cb8-22">knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>opts_chunk<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set</span>(</span>
+<span id="cb8-23">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collapse =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb8-24">)</span>
+<span id="cb8-25"></span>
+<span id="cb8-26"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">options</span>(</span>
+<span id="cb8-27">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>,</span>
+<span id="cb8-28">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span>,</span>
+<span id="cb8-29">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dplyr.summarise.inform =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span></span>
+<span id="cb8-30">)</span>
+<span id="cb8-31"></span>
+<span id="cb8-32"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1234</span>)</span>
+<span id="cb8-33"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span>
+<span id="cb8-34"></span>
+<span id="cb8-35">If you were trying to run a quarto document in Rstudio, it will run fine as long as your default python version has the correct libaries installed. But what if you are working on a project where project specific libraries are to be installed and used. And all to be setup in a python environment in RStudio?</span>
+<span id="cb8-36"></span>
+<span id="cb8-37">It is possible. However, setting up a custom ananconda enrironment and using that specific python version is not that obvious. It is possible, however, if you have some time to spare to figure out from stackoverflow and some github issue queue and elsewhere.</span>
+<span id="cb8-38"></span>
+<span id="cb8-39">Thankfully, I've figured it out after spending a couple of hours. I thought I would document this just in case I need it later or someone else might need it.</span>
+<span id="cb8-40"></span>
+<span id="cb8-41">Here it is.</span>
+<span id="cb8-42"></span>
+<span id="cb8-43"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"># Steps at a glance</span></span>
+<span id="cb8-44"></span>
+<span id="cb8-45"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-   </span>Create python environment using <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">Anaconda distribution</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">](https://www.anaconda.com/download)</span>. I use this because it is easy to use</span>
+<span id="cb8-46"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-   </span>Install the necessary libraries in that environment</span>
+<span id="cb8-47"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-   </span>Create a Quarto project in RStudio</span>
+<span id="cb8-48"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-   </span>Set the project-specific <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`Renviron`</span></span>
+<span id="cb8-49"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-   </span>Set the Python interpreter for your project in Rstudio</span>
+<span id="cb8-50"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-   </span>Check if quarto and Jupyter is properly connected to the python version you want</span>
+<span id="cb8-51"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">-   </span>Render</span>
+<span id="cb8-52"></span>
+<span id="cb8-53"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"># Setting up Anaconda</span></span>
+<span id="cb8-54"></span>
+<span id="cb8-55">I will skip this section assuming that you either have Anaconda installed or you are managing your python environment in some other ways. If you need help with that, please search on YouTube and there are good videos on this topic.</span>
+<span id="cb8-56"></span>
+<span id="cb8-57"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"># Setting up RStudio</span></span>
+<span id="cb8-58"></span>
+<span id="cb8-59">The first this is to to create a separate Rstudio project to house your code and documents. We're obviously using Pyhon with the Jupyter engine to run the Quarto document.</span>
+<span id="cb8-60"></span>
+<span id="cb8-61"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Check your current jupyter engine</span></span>
+<span id="cb8-62"></span>
+<span id="cb8-63">From within Rstudio, uset the Terminal tab (bottom left panel). It should open termina within Rstudio. On the CLI, type the following</span>
+<span id="cb8-64"></span>
+<span id="cb8-65"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">``` bash</span></span>
+<span id="cb8-66"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">quarto</span> check jupyter</span>
+<span id="cb8-67"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span>
+<span id="cb8-68"></span>
+<span id="cb8-69">This should produce an output like the following:</span>
+<span id="cb8-70"></span>
+<span id="cb8-71"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">``` bash</span></span>
+<span id="cb8-72"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[✓]</span> Checking Python 3 installation....OK</span>
+<span id="cb8-73">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Version:</span> 3.8.13 <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Conda</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb8-74">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Path:</span> /Users/enayetraheem/opt/anaconda3/envs/ibis3813/bin/python</span>
+<span id="cb8-75">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Jupyter:</span> 4.10.0</span>
+<span id="cb8-76">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Kernels:</span> python3</span>
+<span id="cb8-77"></span>
+<span id="cb8-78"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[✓]</span> Checking Jupyter engine render....OK</span>
+<span id="cb8-79"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span>
+<span id="cb8-80"></span>
+<span id="cb8-81">Notice that it shows the current Python engine, which is <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`/Users/enayetraheem/opt/anaconda3/envs/ibis3813`</span>. Also we can see the Jupyter version here.</span>
+<span id="cb8-82"></span>
+<span id="cb8-83">**Where does Rstudio get this information from?**</span>
+<span id="cb8-84"></span>
+<span id="cb8-85">The short answer is: from the global <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`.Renviron`</span> file. In the current Renviron, this is what I have.</span>
+<span id="cb8-86"></span>
+<span id="cb8-87"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">``` bash</span></span>
+<span id="cb8-88"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">QUARTO_PYTHON</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>/Users/enayetraheem/opt/anaconda3/envs/ibis3813/bin/python</span>
+<span id="cb8-89"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span>
+<span id="cb8-90"></span>
+<span id="cb8-91">If you want to use this python environment, then you are good. It should run Pyton without issues. Also make sure new libraries are installed in this environment for you to use them in this notebook.</span>
+<span id="cb8-92"></span>
+<span id="cb8-93"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## The problem</span></span>
+<span id="cb8-94"></span>
+<span id="cb8-95">The problem occurs when you want to use a different environment! The one you see above is the global environment. This will be chosen by RStudio unless you specify a project specific <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`.Renviron`</span>.</span>
+<span id="cb8-96"></span>
+<span id="cb8-97">The solution seems easy that you want to set the project specific environment from the Tools?</span>
+<span id="cb8-98"></span>
+<span id="cb8-99">Lets take a look at the current setup.</span>
+<span id="cb8-100"></span>
+<span id="cb8-101"><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">![](rstudio-project-config1.png)</span></span>
+<span id="cb8-102"></span>
+<span id="cb8-103">There is no Python interpreter set for the current project. We can set one but that won't actually work.</span>
+<span id="cb8-104"></span>
+<span id="cb8-105">Let's set the python interpreter to be the following:</span>
+<span id="cb8-106"></span>
+<span id="cb8-107"><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">![](rstudio-project-config2.png)</span></span>
+<span id="cb8-108"></span>
+<span id="cb8-109">Now lets restart RStudio just in case. And check back quarto</span>
+<span id="cb8-110"></span>
+<span id="cb8-111">When you run <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`quarto check jupyer`</span>, you would get the same response as before, and not the Pyton you've set up with as the screenshot above.</span>
+<span id="cb8-112"></span>
+<span id="cb8-113"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## The solution</span></span>
+<span id="cb8-114"></span>
+<span id="cb8-115">The solution is to set project specific <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`.Renviron`</span></span>
+<span id="cb8-116"></span>
+<span id="cb8-117"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```{r, eval=FALSE}</span></span>
+<span id="cb8-118">usethis<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">edit_r_environ</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scope =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"project"</span>)</span>
+<span id="cb8-119"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span>
+<span id="cb8-120"></span>
+<span id="cb8-121">When you execute this, it will open up the editor where you can put the following information </span>
+<span id="cb8-122"></span>
+<span id="cb8-123"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">``` bash</span></span>
+<span id="cb8-124"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">QUARTO_PYTHON</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>/Users/enayetraheem/opt/anaconda3/envs/chasing-python/bin/python3.11</span>
+<span id="cb8-125"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span>
+<span id="cb8-126"></span>
+<span id="cb8-127"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Restart </span></span>
+<span id="cb8-128"></span>
+<span id="cb8-129">Make sure to restart your entire RStudio and then reopen the project. Then run in the terminal the </span>
+<span id="cb8-130"></span>
+<span id="cb8-131"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```bash</span></span>
+<span id="cb8-132"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">quarto</span> check jupyter</span>
+<span id="cb8-133"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span>
+<span id="cb8-134"></span>
+<span id="cb8-135">which should render the following</span>
+<span id="cb8-136"></span>
+<span id="cb8-137"></span>
+<span id="cb8-138"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```bash</span></span>
+<span id="cb8-139"></span>
+<span id="cb8-140"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[✓]</span> Checking Python 3 installation....OK</span>
+<span id="cb8-141">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Version:</span> 3.11.5 <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Conda</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb8-142">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Path:</span> /Users/enayetraheem/opt/anaconda3/envs/chasing-python/bin/python3.11</span>
+<span id="cb8-143">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Jupyter:</span> 5.5.0</span>
+<span id="cb8-144">      <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Kernels:</span> python3</span>
+<span id="cb8-145"></span>
+<span id="cb8-146"></span>
+<span id="cb8-147"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[✓]</span> Checking Jupyter engine render....OK</span>
+<span id="cb8-148"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span>
+<span id="cb8-149"></span>
+<span id="cb8-150"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">## Summary</span></span>
+<span id="cb8-151"></span>
+<span id="cb8-152">This article demonstrated the steps to set a Python interpreter in a local RStudio project. We used Anaconda Python package manager to create and manage the envs. Then we use <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`usethis::edit_r_environ()`</span> library with <span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">`scope="project"`</span> argument to edit the project specific python interpreter.</span></code></pre></div>
+</div>
+</section>
+</section>
+
+ ]]></description>
+  <category>python</category>
+  <category>quarto</category>
+  <category>anaconda</category>
+  <category>usethis</category>
+  <guid>https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html</guid>
+  <pubDate>Mon, 20 Nov 2023 05:00:00 GMT</pubDate>
+  <media:content url="https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/rstudio-quarto-cat-python-env.png" medium="image" type="image/png" height="103" width="144"/>
+</item>
+</channel>
+</rss>
