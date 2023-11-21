@@ -16,9 +16,13 @@
   <title>Rendering Quarto document with Anaconda Python environment in RStudio/Posit</title>
   <dc:creator>Enayetur Raheem</dc:creator>
   <link>https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html</link>
-  <description><![CDATA[ <p>Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in a Python environment in RStudio?</p>
-<p>It is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. It is possible if you have some time to figure out from Stackoverflow and some GitHub issue queues.</p>
-<p>Thankfully, I’ve figured it out after spending a couple of hours. I wanted to document this in case I need it later, or someone else might need it.</p>
+  <description><![CDATA[ <p>Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in an Anaconda Python environment in RStudio?</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full"><p><img src="https://www.eraheem.com/blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/rstudio-quarto-cat-python-env.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption margin-caption">The <a href="https://www.bing.com/images/create/rendering-quarto-document-in-rstudio-with-anaconda/1-655beb394b934e4596477b701667f46f?id=e2U5qsGTLirwwqCzs3KP%2bA%3d%3d&amp;view=detailv2&amp;idpp=genimg&amp;FORM=GCRIDP&amp;mode=overlay">social sharing image</a> was generated using Bing with the prompt “Rendering Quarto document in Rstudio with Anaconda Python environment”</figcaption></figure>
+</div>
+<p>It is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. You might have to spend some time to figure out from Stackoverflow and some GitHub issue queues.</p>
+<p>I’ve figured it out after spending a couple of hours. I wanted to document this in case I need it later, or someone else might need it.</p>
 <p>Here it is.</p>
 <section id="steps-at-a-glance" class="level2"><h2 class="anchored" data-anchor-id="steps-at-a-glance">Steps at a glance</h2>
 <ul>
@@ -144,8 +148,6 @@ background-color: null;
 font-style: inherit;">[✓]</span> Checking Jupyter engine render....OK</span></code></pre></div>
 </section><section id="summary" class="level2"><h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>This article demonstrated the steps to set up a Python interpreter in a local RStudio project. We used the Anaconda Python package manager to create and manage the envs. Then we use <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code> library with <code>scope="project"</code> argument to edit the project-specific Python interpreter.</p>
-</section><section id="credits" class="level2"><h2 class="anchored" data-anchor-id="credits">Credits</h2>
-<p>The <a href="https://www.bing.com/images/create/rendering-quarto-document-in-rstudio-with-anaconda/1-655beb394b934e4596477b701667f46f?id=e2U5qsGTLirwwqCzs3KP%2bA%3d%3d&amp;view=detailv2&amp;idpp=genimg&amp;FORM=GCRIDP&amp;mode=overlay">social sharing image</a> was generated using Bing with the prompt “Rendering Quarto document in Rstudio with Anaconda Python environment”</p>
 
 
 <!-- -->

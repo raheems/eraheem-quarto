@@ -32,11 +32,13 @@ options(
 set.seed(1234)
 ```
 
-Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in a Python environment in RStudio?
+Suppose you were trying to run a quarto document in Rstudio. In that case, it will run fine if your default Python version has the correct libraries installed. But what if you are working on a project where project-specific libraries are to be installed and used? And all to be set up in an Anaconda Python environment in RStudio?
 
-It is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. It is possible if you have some time to figure out from Stackoverflow and some GitHub issue queues.
+![The [social sharing image](https://www.bing.com/images/create/rendering-quarto-document-in-rstudio-with-anaconda/1-655beb394b934e4596477b701667f46f?id=e2U5qsGTLirwwqCzs3KP%2bA%3d%3d&view=detailv2&idpp=genimg&FORM=GCRIDP&mode=overlay) was generated using Bing with the prompt "Rendering Quarto document in Rstudio with Anaconda Python environment"](rstudio-quarto-cat-python-env.png)
 
-Thankfully, I've figured it out after spending a couple of hours. I wanted to document this in case I need it later, or someone else might need it.
+It is possible. However, setting up a custom Anaconda environment and using that specific Python version is not apparent. You might have to spend some time to figure out from Stackoverflow and some GitHub issue queues.
+
+I've figured it out after spending a couple of hours. I wanted to document this in case I need it later, or someone else might need it.
 
 Here it is.
 
@@ -118,24 +120,23 @@ The solution is to set project-specific `.Renviron`
 usethis::edit_r_environ(scope = "project")
 ```
 
-When you execute this, it will open up the editor, where you can put the following information. 
+When you execute this, it will open up the editor, where you can put the following information.
 
 ``` bash
 QUARTO_PYTHON=/Users/enayetraheem/opt/anaconda3/envs/chasing-python/bin/python3.11
 ```
 
-## Restart 
+## Restart
 
-Make sure to restart your entire RStudio and then reopen the project. Then run in the terminal the 
+Make sure to restart your entire RStudio and then reopen the project. Then run in the terminal the
 
-```bash
+``` bash
 quarto check jupyter
 ```
 
 This should render the following.
 
-
-```bash
+``` bash
 
 [✓] Checking Python 3 installation....OK
       Version: 3.11.5 (Conda)
@@ -151,6 +152,3 @@ This should render the following.
 
 This article demonstrated the steps to set up a Python interpreter in a local RStudio project. We used the Anaconda Python package manager to create and manage the envs. Then we use `usethis::edit_r_environ()` library with `scope="project"` argument to edit the project-specific Python interpreter.
 
-## Credits
-
-The [social sharing image](https://www.bing.com/images/create/rendering-quarto-document-in-rstudio-with-anaconda/1-655beb394b934e4596477b701667f46f?id=e2U5qsGTLirwwqCzs3KP%2bA%3d%3d&view=detailv2&idpp=genimg&FORM=GCRIDP&mode=overlay) was generated using Bing with the  prompt "Rendering Quarto document in Rstudio with Anaconda Python environment"
