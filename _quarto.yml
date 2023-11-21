@@ -54,12 +54,6 @@ website:
     description: "{{< meta description-meta >}}"
     locale: en_US
   
-  comments:
-      giscus: 
-        repo: raheems/eraheem-comments
-        category: Blog comments
-        category-id: DIC_kwDOIg6EJc4CSz92
-  
   navbar:
     pinned: true
 
