@@ -40,7 +40,7 @@ Thankfully, I've figured it out after spending a couple of hours. I thought I wo
 
 Here it is.
 
-# Steps at a glance
+## Steps at a glance
 
 -   Create python environment using [Anaconda distribution](https://www.anaconda.com/download). I use this because it is easy to use
 -   Install the necessary libraries in that environment
@@ -50,11 +50,11 @@ Here it is.
 -   Check if quarto and Jupyter is properly connected to the python version you want
 -   Render
 
-# Setting up Anaconda
+## Setting up Anaconda
 
 I will skip this section assuming that you either have Anaconda installed or you are managing your python environment in some other ways. If you need help with that, please search on YouTube and there are good videos on this topic.
 
-# Setting up RStudio
+## Setting up RStudio
 
 The first this is to to create a separate Rstudio project to house your code and documents. We're obviously using Pyhon with the Jupyter engine to run the Quarto document.
 

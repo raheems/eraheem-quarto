@@ -292,5 +292,26 @@
     "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
     "section": "Summary",
     "text": "Summary\nThis article demonstrated the steps to set a Python interpreter in a local RStudio project. We used Anaconda Python package manager to create and manage the envs. Then we use usethis::edit_r_environ() library with scope=\"project\" argument to edit the project specific python interpreter."
+  },
+  {
+    "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#steps-at-a-glance",
+    "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#steps-at-a-glance",
+    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "section": "Steps at a glance",
+    "text": "Steps at a glance\n\nCreate python environment using Anaconda distribution. I use this because it is easy to use\nInstall the necessary libraries in that environment\nCreate a Quarto project in RStudio\nSet the project-specific Renviron\n\nSet the Python interpreter for your project in Rstudio\nCheck if quarto and Jupyter is properly connected to the python version you want\nRender"
+  },
+  {
+    "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#setting-up-anaconda",
+    "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#setting-up-anaconda",
+    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "section": "Setting up Anaconda",
+    "text": "Setting up Anaconda\nI will skip this section assuming that you either have Anaconda installed or you are managing your python environment in some other ways. If you need help with that, please search on YouTube and there are good videos on this topic."
+  },
+  {
+    "objectID": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#setting-up-rstudio",
+    "href": "blog/2023/11/20/quarto-jupyter-conda-env-rstudio-config/index.html#setting-up-rstudio",
+    "title": "Rendering Quarto document with Anaconda Python environment in RStudio/Posit",
+    "section": "Setting up RStudio",
+    "text": "Setting up RStudio\nThe first this is to to create a separate Rstudio project to house your code and documents. We’re obviously using Pyhon with the Jupyter engine to run the Quarto document."
   }
 ]

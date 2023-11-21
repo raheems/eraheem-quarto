@@ -218,16 +218,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
 <li><a href="#steps-at-a-glance" id="toc-steps-at-a-glance" class="nav-link active" data-scroll-target="#steps-at-a-glance">Steps at a glance</a></li>
   <li><a href="#setting-up-anaconda" id="toc-setting-up-anaconda" class="nav-link" data-scroll-target="#setting-up-anaconda">Setting up Anaconda</a></li>
-  <li>
-<a href="#setting-up-rstudio" id="toc-setting-up-rstudio" class="nav-link" data-scroll-target="#setting-up-rstudio">Setting up RStudio</a>
-  <ul class="collapse">
-<li><a href="#check-your-current-jupyter-engine" id="toc-check-your-current-jupyter-engine" class="nav-link" data-scroll-target="#check-your-current-jupyter-engine">Check your current jupyter engine</a></li>
+  <li><a href="#setting-up-rstudio" id="toc-setting-up-rstudio" class="nav-link" data-scroll-target="#setting-up-rstudio">Setting up RStudio</a></li>
+  <li><a href="#check-your-current-jupyter-engine" id="toc-check-your-current-jupyter-engine" class="nav-link" data-scroll-target="#check-your-current-jupyter-engine">Check your current jupyter engine</a></li>
   <li><a href="#the-problem" id="toc-the-problem" class="nav-link" data-scroll-target="#the-problem">The problem</a></li>
   <li><a href="#the-solution" id="toc-the-solution" class="nav-link" data-scroll-target="#the-solution">The solution</a></li>
   <li><a href="#restart" id="toc-restart" class="nav-link" data-scroll-target="#restart">Restart</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  </ul>
-</li>
   </ul></nav>
 </nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
@@ -238,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It is possible. However, setting up a custom ananconda enrironment and using that specific python version is not that obvious. It is possible, however, if you have some time to spare to figure out from stackoverflow and some github issue queue and elsewhere.</p>
 <p>Thankfully, I’ve figured it out after spending a couple of hours. I thought I would document this just in case I need it later or someone else might need it.</p>
 <p>Here it is.</p>
-<section id="steps-at-a-glance" class="level1"><h1>Steps at a glance</h1>
+<section id="steps-at-a-glance" class="level2"><h2 class="anchored" data-anchor-id="steps-at-a-glance">Steps at a glance</h2>
 <ul>
 <li>Create python environment using <a href="https://www.anaconda.com/download">Anaconda distribution</a>. I use this because it is easy to use</li>
 <li>Install the necessary libraries in that environment</li>
@@ -248,11 +244,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Set the Python interpreter for your project in Rstudio</li>
 <li>Check if quarto and Jupyter is properly connected to the python version you want</li>
 <li>Render</li>
-</ul></section><section id="setting-up-anaconda" class="level1"><h1>Setting up Anaconda</h1>
+</ul></section><section id="setting-up-anaconda" class="level2"><h2 class="anchored" data-anchor-id="setting-up-anaconda">Setting up Anaconda</h2>
 <p>I will skip this section assuming that you either have Anaconda installed or you are managing your python environment in some other ways. If you need help with that, please search on YouTube and there are good videos on this topic.</p>
-</section><section id="setting-up-rstudio" class="level1"><h1>Setting up RStudio</h1>
+</section><section id="setting-up-rstudio" class="level2"><h2 class="anchored" data-anchor-id="setting-up-rstudio">Setting up RStudio</h2>
 <p>The first this is to to create a separate Rstudio project to house your code and documents. We’re obviously using Pyhon with the Jupyter engine to run the Quarto document.</p>
-<section id="check-your-current-jupyter-engine" class="level2"><h2 class="anchored" data-anchor-id="check-your-current-jupyter-engine">Check your current jupyter engine</h2>
+</section><section id="check-your-current-jupyter-engine" class="level2"><h2 class="anchored" data-anchor-id="check-your-current-jupyter-engine">Check your current jupyter engine</h2>
 <p>From within Rstudio, uset the Terminal tab (bottom left panel). It should open termina within Rstudio. On the CLI, type the following</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check jupyter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This should produce an output like the following:</p>
@@ -304,7 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <!-- -->
 
-</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{raheem2023,
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{raheem2023,
   author = {Raheem, Enayetur},
   title = {Rendering {Quarto} Document with {Anaconda} {Python}
     Environment in {RStudio/Posit}},
@@ -642,7 +638,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>Here it is.</span>
 <span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="fu"># Steps at a glance</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Steps at a glance</span></span>
 <span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create python environment using <span class="co">[</span><span class="ot">Anaconda distribution</span><span class="co">](https://www.anaconda.com/download)</span>. I use this because it is easy to use</span>
 <span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Install the necessary libraries in that environment</span>
@@ -652,11 +648,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Check if quarto and Jupyter is properly connected to the python version you want</span>
 <span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Render</span>
 <span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="fu"># Setting up Anaconda</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setting up Anaconda</span></span>
 <span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>I will skip this section assuming that you either have Anaconda installed or you are managing your python environment in some other ways. If you need help with that, please search on YouTube and there are good videos on this topic.</span>
 <span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="fu"># Setting up RStudio</span></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setting up RStudio</span></span>
 <span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>The first this is to to create a separate Rstudio project to house your code and documents. We're obviously using Pyhon with the Jupyter engine to run the Quarto document.</span>
 <span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
