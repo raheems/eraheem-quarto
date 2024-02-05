@@ -10,6 +10,6 @@ listing:
     type: full
     language: en
   contents:
-    - "blog/**/index.qmd"
+    - "blog/*/index.qmd"
     - "!blog/index.qmd"
 ---
