@@ -4,7 +4,7 @@ author: ""
 description-meta: "Enayetur Raheem's blog"
 listing:
   - id: posts_2024
-    contents: "2024/**/index.qmd"
+    contents: "2024/*/index.qmd"
     sort: "date desc"
     template: ../html/blog/listing.ejs
     categories: true
