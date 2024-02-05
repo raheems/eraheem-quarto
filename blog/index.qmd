@@ -13,7 +13,6 @@ listing:
     contents: "2023/**/index.qmd"
     sort: "date desc"
     template: ../html/blog/listing.ejs
-    categories: true
  
 page-layout: full
 toc-title: Year
@@ -21,7 +20,7 @@ toc-location: right
 date-format: "MMMM D, YYYY"
 code-tools: false
 comments: false
-
+freeze: false
 ---
 
 ## 2024
